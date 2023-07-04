@@ -1,0 +1,24 @@
+Space Escape 
+
+art:
+
+background
+meterorite(object)
+ateroid(background + object)
+character(spaceship)
+star bits(points)
+
+camera: side ways
+
+no gravity
+
+score:
+
+star bits: 5
+every second: 1
+
+background:
+
+galaxy
+star
+comet
