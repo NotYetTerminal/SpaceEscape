@@ -1,7 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://pc5hly7gby85"]
+[gd_scene load_steps=3 format=3 uid="uid://pc5hly7gby85"]
 
 [ext_resource type="PackedScene" uid="uid://b5e50j6agi16p" path="res://scenes/player.tscn" id="1_1rtau"]
+[ext_resource type="PackedScene" uid="uid://848o0ispfdu1" path="res://meteroite.tscn" id="2_xu6ae"]
 
 [node name="Root" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("1_1rtau")]
+
+[node name="Meteroite" parent="." instance=ExtResource("2_xu6ae")]
+
+[node name="MeteroiteTimer" type="Timer" parent="."]
+wait_time = 3.0
