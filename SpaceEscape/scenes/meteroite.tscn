@@ -1,8 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://848o0ispfdu1"]
+[gd_scene load_steps=4 format=3 uid="uid://remkaqak0njo"]
 
 [ext_resource type="Script" path="res://scenes/meteroite.gd" id="1_ibdci"]
+[ext_resource type="Texture2D" uid="uid://c3jghj8k20ans" path="res://icon.svg" id="2_senwf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u0ij3"]
+radius = 60.0
 
 [node name="Meteroite" type="RigidBody2D"]
 collision_mask = 0
@@ -11,6 +13,7 @@ script = ExtResource("1_ibdci")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_senwf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_u0ij3")

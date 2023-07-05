@@ -9,7 +9,7 @@ var screen_size: Vector2
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
-	start(Vector2(100, screen_size.y / 2))
+	start()
 
 
 func _process(delta: float) -> void:
@@ -29,7 +29,7 @@ func _on_body_entered(body: Node2D) -> void:
 	$CollisionShape2D.set_deferred("disabled", true)
 
 
-func start(pos: Vector2) -> void:
-	position = pos
+func start() -> void:
+	position = Vector2(100, screen_size.y / 2)
 	show()
 	$CollisionShape2D.disabled = false
