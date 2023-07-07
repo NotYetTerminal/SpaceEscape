@@ -1,29 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://pc5hly7gby85"]
+[gd_scene load_steps=6 format=3 uid="uid://pc5hly7gby85"]
 
 [ext_resource type="PackedScene" uid="uid://b5e50j6agi16p" path="res://scenes/player.tscn" id="1_1rtau"]
 [ext_resource type="Script" path="res://scenes/root.gd" id="1_64cco"]
-[ext_resource type="Script" path="res://scenes/meteroite.gd" id="2_vnpci"]
-[ext_resource type="Texture2D" uid="uid://c3jghj8k20ans" path="res://icon.svg" id="3_eadog"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_u0ij3"]
-radius = 60.0
-
-[sub_resource type="PackedScene" id="PackedScene_k208n"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("Meteroite", "collision_mask", "gravity_scale", "script", "metadata/_edit_group_", "RigidBody2D", "Sprite2D", "texture", "CollisionShape2D", "shape", "VisibleOnScreenNotifier2D"),
-"node_count": 4,
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 5, 0, -1, 4, 1, 0, 2, 1, 3, 2, 4, 3, 0, 0, 0, 6, 6, -1, 1, 7, 4, 0, 0, 0, 8, 8, -1, 1, 9, 5, 0, 0, 0, 10, 10, -1, 0, 0),
-"variants": [0, 0.0, ExtResource("2_vnpci"), true, ExtResource("3_eadog"), SubResource("CircleShape2D_u0ij3")],
-"version": 3
-}
+[ext_resource type="PackedScene" uid="uid://remkaqak0njo" path="res://scenes/meteroite.tscn" id="2_hpuhn"]
+[ext_resource type="PackedScene" uid="uid://ct0fnulieix3f" path="res://scenes/backgroundObject.tscn" id="3_0o5l8"]
+[ext_resource type="PackedScene" uid="uid://48uhu6miko33" path="res://scenes/hud.tscn" id="5_qms6o"]
 
 [node name="Root" type="Node"]
 script = ExtResource("1_64cco")
-meteroite_scene = SubResource("PackedScene_k208n")
+meteroite_scene = ExtResource("2_hpuhn")
+background_object_scene = ExtResource("3_0o5l8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.180392, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_1rtau")]
 
@@ -32,6 +27,12 @@ wait_time = 2.0
 
 [node name="ScoreTimer" type="Timer" parent="."]
 
+[node name="BOTimer" type="Timer" parent="."]
+
+[node name="HUD" parent="." instance=ExtResource("5_qms6o")]
+
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="MeteroiteTimer" to="." method="_on_meteroite_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="timeout" from="BOTimer" to="." method="_on_background_object_timer_timeout"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]

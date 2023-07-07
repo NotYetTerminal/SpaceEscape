@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_u0ij3"]
 radius = 60.0
 
-[node name="Meteroite" type="RigidBody2D"]
+[node name="Meteroite" type="RigidBody2D" groups=["meteroite"]]
 collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_ibdci")
@@ -19,3 +19,6 @@ texture = ExtResource("2_senwf")
 shape = SubResource("CircleShape2D_u0ij3")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(6.1, 6)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
