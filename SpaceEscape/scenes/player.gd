@@ -26,10 +26,10 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	hide()
 	hit.emit()
-	$CollisionShape2D.set_deferred("disabled", true)
+	$CollisionPolygon2D.set_deferred("disabled", true)
 
 
 func start() -> void:
-	position = Vector2(100, screen_size.y / 2)
+	position = Vector2(170, screen_size.y / 2)
 	show()
-	$CollisionShape2D.disabled = false
+	$CollisionPolygon2D.disabled = false

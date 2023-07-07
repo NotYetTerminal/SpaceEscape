@@ -11,7 +11,7 @@ func show_message(text) -> void:
 
 
 func show_game_over() -> void:
-	show_message("Oops...")
+	show_message("Game \nOver!")
 	await $MessageTimer.timeout
 	
 	$Message.text = "Space Escape\nReady?"
