@@ -1,8 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://ct0fnulieix3f"]
+[gd_scene load_steps=14 format=3 uid="uid://ct0fnulieix3f"]
 
 [ext_resource type="Script" path="res://scenes/meteroite.gd" id="1_1xucr"]
 [ext_resource type="Texture2D" uid="uid://pcjv5glljxs" path="res://art/mocshi.png" id="2_gj6u8"]
 [ext_resource type="Texture2D" uid="uid://biq3s4y3y0r6j" path="res://art/Moon.png" id="3_38hha"]
+[ext_resource type="Texture2D" uid="uid://dp36ygsj5gwab" path="res://art/planet.png" id="4_f1xhe"]
+[ext_resource type="Texture2D" uid="uid://bqw7lytrcis1k" path="res://art/shootingstar.png" id="5_hq4xl"]
+[ext_resource type="Texture2D" uid="uid://c26icgskiyojf" path="res://art/star1.png" id="6_5uwse"]
+[ext_resource type="Texture2D" uid="uid://2ol2dsfa65sk" path="res://art/star2.png" id="7_frh5j"]
+[ext_resource type="Texture2D" uid="uid://de88n6bsc5fu2" path="res://art/star3.png" id="8_iamlm"]
+[ext_resource type="Texture2D" uid="uid://bl07532wbildw" path="res://art/star4.png" id="9_imcta"]
+[ext_resource type="Texture2D" uid="uid://d0yr4ukgcgjc1" path="res://art/star.png" id="10_3hyko"]
+[ext_resource type="Texture2D" uid="uid://cu21klp3g4aa1" path="res://art/sun.png" id="11_gwc5m"]
+[ext_resource type="Texture2D" uid="uid://bx0ssissf7r38" path="res://art/ufo.png" id="12_q2mba"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ifxif"]
 
@@ -12,16 +21,17 @@ collision_layer = 0
 collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_1xucr")
-images_array = Array[CompressedTexture2D]([ExtResource("2_gj6u8"), ExtResource("3_38hha")])
+images_array = Array[CompressedTexture2D]([ExtResource("2_gj6u8"), ExtResource("3_38hha"), ExtResource("4_f1xhe"), ExtResource("5_hq4xl"), ExtResource("6_5uwse"), ExtResource("7_frh5j"), ExtResource("8_iamlm"), ExtResource("9_imcta"), ExtResource("10_3hyko"), ExtResource("11_gwc5m"), ExtResource("12_q2mba")])
 metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_gj6u8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ifxif")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-scale = Vector2(6.1, 6)
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("12_q2mba")
 
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited" flags=18]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="CollisionShape2D"]
+scale = Vector2(7.9, 5.26175)
+
+[connection signal="screen_exited" from="CollisionShape2D/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited" flags=18]

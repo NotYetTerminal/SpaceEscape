@@ -13,17 +13,17 @@ script = ExtResource("1_ibdci")
 images_array = Array[CompressedTexture2D]([ExtResource("2_3x1fe")])
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_u0ij3")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
 position = Vector2(57, -3)
 rotation = 0.349066
 scale = Vector2(0.478747, 0.478747)
 texture = ExtResource("2_3x1fe")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_u0ij3")
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="CollisionShape2D"]
 position = Vector2(48, 0)
 scale = Vector2(15.26, 9.32)
 
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="screen_exited" from="CollisionShape2D/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

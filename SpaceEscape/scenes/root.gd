@@ -29,9 +29,12 @@ func _on_meteroite_timer_timeout() -> void:
 	var value: float = randf() * 720
 	meteroite.position = Vector2(1400, value)
 	
-	var velocity = Vector2(-randf_range(250, 350) - score * 8, 0)
+	var velocity: Vector2 = Vector2(-randf_range(250, 350) - score * 8, 0)
 	meteroite.linear_velocity = velocity
 	
+	var scale_value: float = randi_range(2, 5) / 5.0
+	meteroite.get_child(0).scale = Vector2(scale_value, scale_value)
+
 	add_child(meteroite)
 
 
@@ -40,8 +43,12 @@ func _on_background_object_timer_timeout() -> void:
 	var value: float = randf() * 720
 	background_object.position = Vector2(1400, value)
 	
-	var velocity = Vector2(-200 - score * 8, 0)
+	var velocity: Vector2 = Vector2(-200 - score * 8, 0)
 	background_object.linear_velocity = velocity
+	
+	var scale_value: float = 0.5
+	background_object.get_child(0).scale = Vector2(scale_value, scale_value)
+	background_object.rotation = randf_range(0, PI)
 	
 	add_child(background_object)
 
