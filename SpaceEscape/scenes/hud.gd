@@ -14,7 +14,7 @@ func show_game_over() -> void:
 	show_message("Game \nOver!")
 	await $MessageTimer.timeout
 	
-	$Message.text = "Space Escape\nReady?"
+	$Message.text = "Space Escape\nReady?\nMove with UP/DOWN!"
 	$Message.show()
 	await  get_tree().create_timer(1.0).timeout
 	$StartButton.show()
