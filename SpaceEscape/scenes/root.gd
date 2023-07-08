@@ -18,6 +18,7 @@ func new_game() -> void:
 
 
 func game_over() -> void:
+	$Explosion.play()
 	$MeteroiteTimer.stop()
 	$BOTimer.stop()
 	$ScoreTimer.stop()
@@ -57,3 +58,7 @@ func _on_score_timer_timeout():
 	score += 1
 	$HUD.update_score(score)
 
+
+
+func _on_music_finished():
+	$Music.play()

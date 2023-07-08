@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://pc5hly7gby85"]
+[gd_scene load_steps=8 format=3 uid="uid://pc5hly7gby85"]
 
 [ext_resource type="PackedScene" uid="uid://b5e50j6agi16p" path="res://scenes/player.tscn" id="1_1rtau"]
 [ext_resource type="Script" path="res://scenes/root.gd" id="1_64cco"]
 [ext_resource type="PackedScene" uid="uid://remkaqak0njo" path="res://scenes/meteroite.tscn" id="2_hpuhn"]
 [ext_resource type="PackedScene" uid="uid://ct0fnulieix3f" path="res://scenes/backgroundObject.tscn" id="3_0o5l8"]
 [ext_resource type="PackedScene" uid="uid://48uhu6miko33" path="res://scenes/hud.tscn" id="5_qms6o"]
+[ext_resource type="AudioStream" uid="uid://dpffm2becuqap" path="res://ObservingTheStar.ogg" id="6_hd7ou"]
+[ext_resource type="AudioStream" uid="uid://lygwgevpexbj" path="res://rock_breaking.wav" id="7_gvw06"]
 
 [node name="Root" type="Node"]
 script = ExtResource("1_64cco")
@@ -31,8 +33,17 @@ wait_time = 1.4
 
 [node name="HUD" parent="." instance=ExtResource("5_qms6o")]
 
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_hd7ou")
+autoplay = true
+
+[node name="Explosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_gvw06")
+volume_db = -10.0
+
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="MeteroiteTimer" to="." method="_on_meteroite_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="BOTimer" to="." method="_on_background_object_timer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
+[connection signal="finished" from="Music" to="." method="_on_music_finished"]
